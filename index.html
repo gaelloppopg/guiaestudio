@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Estudio · Lectura, Escritura y Comunicación Académica</title>
+<style>
+  :root{
+    --ink:#0d1b2a;
+    --azul:#0a3d62;
+    --azul2:#186a9e;
+    --azul3:#2e9bd6;
+    --cian:#4fc3f7;
+    --fondo:#eef3f8;
+    --blanco:#ffffff;
+    --gris:#dbe5ee;
+    --texto:#22303f;
+    --suave:#5b7185;
+    --amarillo:#e8a317;
+    --verde:#1f9d55;
+    --rojo:#c0392b;
+    --sombra:0 12px 32px rgba(10,61,98,.10);
+    --sombra-hover:0 20px 44px rgba(10,61,98,.18);
+    --radio:20px;
+    --trans:.28s cubic-bezier(.4,0,.2,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter','Segoe UI',Roboto,system-ui,-apple-system,sans-serif;
+    line-height:1.7;color:var(--texto);background:var(--fondo);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ============ NAV ============ */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(10,61,98,.96);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    padding:.7rem 1.4rem;
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  }
+  .brand{
+    display:flex;align-items:center;gap:.6rem;
+    color:#fff;font-weight:800;font-size:1rem;letter-spacing:.2px;white-space:nowrap;
+  }
+  .brand .dot{
+    width:12px;height:12px;border-radius:50%;
+    background:var(--cian);box-shadow:0 0 0 4px rgba(79,195,247,.25);
+  }
+  header nav{display:flex;gap:.25rem;flex-wrap:wrap;justify-content:flex-end;}
+  header nav a{
+    color:#b9d6ea;text-decoration:none;font-size:.8rem;font-weight:600;
+    padding:.4rem .8rem;border-radius:30px;transition:var(--trans);white-space:nowrap;
+  }
+  header nav a:hover,header nav a.active{background:rgba(79,195,247,.18);color:#fff;}
+
+  /* ============ HERO MINIMAL ============ */
+  .hero{
+    background:
+      radial-gradient(circle at 15% 20%,rgba(79,195,247,.18),transparent 55%),
+      radial-gradient(circle at 85% 80%,rgba(24,106,158,.28),transparent 55%),
+      linear-gradient(135deg,#0a3d62,#0f4d76 60%,#186a9e);
+    color:#fff;padding:3rem 1.5rem 3.5rem;text-align:center;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events:none;
+  }
+  .hero h1{
+    font-size:2.1rem;line-height:1.2;margin-bottom:.6rem;
+    letter-spacing:-.8px;position:relative;z-index:1;
+  }
+  .hero h1 span{
+    background:linear-gradient(90deg,var(--cian),#a8e6ff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p{max-width:620px;margin:0 auto;font-size:1rem;opacity:.85;position:relative;z-index:1;}
+
+  /* ============ CONTENEDOR ============ */
+  .wrap{max-width:1040px;margin:0 auto;padding:2rem 1rem 4rem;}
+
+  /* ============ SECCIONES ============ */
+  section{margin-bottom:3.2rem;scroll-margin-top:80px;}
+  .sec-head{
+    display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem;
+  }
+  .sec-head .num{
+    background:linear-gradient(135deg,var(--azul),var(--azul2));
+    color:#fff;font-weight:900;font-size:1rem;
+    min-width:54px;height:54px;border-radius:16px;display:grid;place-items:center;
+    box-shadow:0 8px 20px rgba(10,61,98,.28);flex-shrink:0;
+    letter-spacing:-.5px;
+  }
+  .sec-head h2{font-size:1.5rem;color:var(--azul);letter-spacing:-.4px;line-height:1.2;}
+
+  h3{
+    font-size:1.15rem;color:var(--azul2);margin:2rem 0 .8rem;
+    display:flex;align-items:center;gap:.6rem;font-weight:800;
+  }
+  h3::before{
+    content:"";width:5px;height:20px;border-radius:3px;
+    background:linear-gradient(180deg,var(--azul3),var(--cian));flex-shrink:0;
+  }
+  h4{font-size:1rem;color:var(--azul);margin:1rem 0 .4rem;font-weight:800;}
+  p{margin-bottom:.9rem;}
+  ul,ol{margin:.5rem 0 1rem 1.4rem;}
+  li{margin-bottom:.35rem;}
+  strong{color:var(--azul);}
+
+  /* ============ TARJETAS ============ */
+  .grid{display:grid;gap:1rem;margin:1rem 0;}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(270px,1fr));}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(215px,1fr));}
+
+  .card{
+    background:var(--blanco);border-radius:var(--radio);box-shadow:var(--sombra);
+    padding:1.4rem 1.6rem;margin-bottom:1rem;
+    border:1px solid rgba(10,61,98,.05);
+    transition:var(--trans);
+  }
+  .card:hover{box-shadow:var(--sombra-hover);}
+
+  .tile{
+    background:var(--blanco);border-radius:16px;padding:1.2rem 1.3rem;
+    border:1px solid rgba(10,61,98,.06);
+    box-shadow:0 4px 16px rgba(10,61,98,.06);
+    transition:var(--trans);position:relative;overflow:hidden;
+  }
+  .tile::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,var(--azul3),var(--cian));
+    transform:scaleX(0);transform-origin:left;transition:transform var(--trans);
+  }
+  .tile:hover{transform:translateY(-4px);box-shadow:var(--sombra-hover);}
+  .tile:hover::before{transform:scaleX(1);}
+  .tile h4{margin-top:0;padding-bottom:.5rem;border-bottom:1px solid var(--gris);}
+  .tile p:last-child{margin-bottom:0;}
+
+  .tag{
+    display:inline-block;background:linear-gradient(135deg,var(--azul2),var(--azul3));
+    color:#fff;font-size:.65rem;font-weight:800;letter-spacing:.7px;
+    text-transform:uppercase;padding:.24rem .75rem;border-radius:20px;margin-bottom:.6rem;
+  }
+  .tag.verde{background:linear-gradient(135deg,#1f9d55,#37c478);}
+  .tag.amarillo{background:linear-gradient(135deg,#e8940a,#f5b83d);color:#3a2a00;}
+  .tag.rojo{background:linear-gradient(135deg,#c0392b,#e05a4a);}
+
+  /* ============ VIDEO ============ */
+  .video{
+    background:linear-gradient(135deg,#fff8f8,#ffeded);
+    border:1px solid #ffd6d6;border-radius:16px;
+    padding:.85rem 1.1rem;margin:.7rem 0;display:flex;align-items:center;gap:.9rem;
+    transition:var(--trans);cursor:pointer;
+  }
+  .video:hover{background:linear-gradient(135deg,#ffeded,#ffdede);transform:translateX(5px);box-shadow:0 8px 20px rgba(192,57,43,.12);}
+  .video .play{
+    background:linear-gradient(135deg,#c0392b,#e05a4a);color:#fff;
+    min-width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+    flex-shrink:0;box-shadow:0 4px 12px rgba(192,57,43,.3);
+    transition:var(--trans);
+  }
+  .video:hover .play{transform:scale(1.08);}
+  .video .play svg{width:18px;height:18px;fill:#fff;}
+  .video a{color:#a8281a;font-weight:800;text-decoration:none;font-size:.92rem;display:block;}
+  .video a:hover{text-decoration:underline;}
+  .video small{display:block;color:#8a5a55;font-weight:500;font-size:.78rem;margin-top:.1rem;}
+
+  /* ============ PREGUNTAS ============ */
+  .qa{
+    background:var(--blanco);border-radius:var(--radio);box-shadow:var(--sombra);
+    padding:1.2rem 1.4rem;margin:1.2rem 0;border:1px solid rgba(10,61,98,.05);
+  }
+  .qa > h4{
+    margin-top:0;color:var(--azul);display:flex;align-items:center;gap:.5rem;
+    font-size:.95rem;text-transform:uppercase;letter-spacing:.5px;
+  }
+  .qa > h4::before{
+    content:"";width:8px;height:8px;border-radius:50%;
+    background:var(--amarillo);box-shadow:0 0 0 4px rgba(232,163,23,.18);
+  }
+  details{
+    background:#f8fbfd;border:1px solid var(--gris);border-radius:12px;
+    margin:.5rem 0;overflow:hidden;transition:var(--trans);
+  }
+  details[open]{border-color:var(--azul3);box-shadow:0 4px 14px rgba(46,155,214,.12);}
+  details summary{
+    cursor:pointer;padding:.75rem 1.1rem;font-weight:700;color:var(--azul2);
+    list-style:none;display:flex;align-items:center;gap:.7rem;transition:var(--trans);
+    font-size:.93rem;user-select:none;
+  }
+  details summary::-webkit-details-marker{display:none;}
+  details summary .chev{
+    margin-left:auto;width:22px;height:22px;flex-shrink:0;
+    display:grid;place-items:center;border-radius:6px;
+    background:var(--gris);color:var(--azul2);font-weight:900;font-size:.9rem;
+    transition:var(--trans);
+  }
+  details[open] summary .chev{transform:rotate(45deg);background:var(--azul3);color:#fff;}
+  details summary:hover{background:#eef5fa;}
+  details .resp{
+    padding:.7rem 1.1rem 1rem 1.1rem;color:var(--texto);font-size:.92rem;
+    border-top:1px dashed var(--gris);animation:fadeIn .3s ease;
+    line-height:1.65;
+  }
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+  details .resp em{color:var(--azul2);font-style:normal;font-weight:600;}
+
+  /* ============ NOTA / ALERTA ============ */
+  .nota{
+    background:linear-gradient(135deg,#eaf7ef,#dff3e7);
+    border-left:5px solid var(--verde);border-radius:0 14px 14px 0;
+    padding:1rem 1.3rem;margin:1rem 0;font-size:.93rem;
+  }
+  .nota strong{color:var(--verde);}
+  .alerta{
+    background:linear-gradient(135deg,#fdecea,#fbdcd8);
+    border-left:5px solid var(--rojo);border-radius:0 14px 14px 0;
+    padding:1rem 1.3rem;margin:1rem 0;font-size:.93rem;
+  }
+  .alerta strong{color:var(--rojo);}
+
+  /* ============ TABLA ============ */
+  .tabla-wrap{overflow-x:auto;margin:1rem 0;border-radius:14px;box-shadow:var(--sombra);}
+  table{width:100%;border-collapse:collapse;background:#fff;font-size:.9rem;min-width:580px;}
+  th{
+    background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff;
+    padding:.75rem 1rem;text-align:left;font-weight:800;font-size:.82rem;
+    text-transform:uppercase;letter-spacing:.4px;
+  }
+  td{padding:.7rem 1rem;border-bottom:1px solid var(--gris);vertical-align:top;}
+  tr:nth-child(even) td{background:#f7fafc;}
+  tr:hover td{background:#eaf4fa;}
+  td strong{color:var(--azul);}
+  td .ok{color:var(--verde);font-weight:700;}
+  td .bad{color:var(--rojo);font-weight:700;text-decoration:line-through;text-decoration-color:rgba(192,57,43,.4);}
+
+  /* ============ EXAMEN ============ */
+  .examen{
+    background:linear-gradient(135deg,#f0f7fc,#e2eef7);
+    border-radius:var(--radio);padding:1.5rem;border:1px solid rgba(46,155,214,.15);
+  }
+  .examen details{background:#fff;}
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--azul);color:#a9c8dd;text-align:center;
+    padding:2.2rem 1.5rem;font-size:.84rem;margin-top:3rem;
+  }
+  footer strong{color:#fff;}
+  footer .line{width:60px;height:3px;background:var(--cian);border-radius:3px;margin:0 auto 1rem;}
+
+  /* ============ TOP BTN ============ */
+  #top{
+    position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;
+    background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff;border:none;cursor:pointer;
+    width:50px;height:50px;border-radius:16px;font-size:1.2rem;
+    box-shadow:0 10px 24px rgba(10,61,98,.35);opacity:0;pointer-events:none;
+    transition:var(--trans);display:grid;place-items:center;
+  }
+  #top.show{opacity:1;pointer-events:auto;}
+  #top:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(10,61,98,.45);}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:640px){
+    .hero h1{font-size:1.5rem;}
+    header{flex-direction:column;gap:.4rem;padding:.6rem .8rem;}
+    header nav{justify-content:center;}
+    .sec-head h2{font-size:1.2rem;}
+    .sec-head .num{min-width:44px;height:44px;font-size:.85rem;}
+    .wrap{padding:1.5rem .7rem 3rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand"><span class="dot"></span>Guía de Estudio</div>
+  <nav>
+    <a href="#lectura">Lectura</a>
+    <a href="#escritura">Escritura</a>
+    <a href="#academica">Académica</a>
+    <a href="#plagio">Plagio</a>
+    <a href="#examen">Examen</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Lectura, Escritura y <span>Comunicación Académica</span></h1>
+  <p>Teoría, videos, ejemplos y preguntas con respuesta para estudiar a tu ritmo.</p>
+</div>
+
+<div class="wrap">
+
+  <!-- ==================== 2.1 LECTURA ==================== -->
+  <section id="lectura">
+    <div class="sec-head">
+      <div class="num">2.1</div>
+      <h2>Lectura</h2>
+    </div>
+
+    <h3 id="fases">Fases del proceso lector</h3>
+    <p>El proceso lector no es lineal ni pasivo. Se organiza en <strong>tres fases</strong> que se retroalimentan. La comprensión real ocurre cuando el lector <strong>construye significado</strong>, no cuando solo decodifica palabras.</p>
+
+    <div class="grid g3">
+      <div class="tile">
+        <span class="tag">Fase 1</span>
+        <h4>Prelectura</h4>
+        <p>Antes de leer el cuerpo del texto. Activas conocimientos previos, revisas título, subtítulos, imágenes y estructura. El objetivo es <strong>predecir</strong> de qué tratará.</p>
+        <p><em>Preguntas típicas:</em> ¿Cómo se titula? ¿Qué tipo de texto es? ¿Qué sé ya del tema?</p>
+      </div>
+      <div class="tile">
+        <span class="tag">Fase 2</span>
+        <h4>Lectura</h4>
+        <p>El acto de leer propiamente. Aplicas <strong>muestreo</strong> (seleccionar lo relevante), <strong>predicción</strong> (anticipar) e <strong>inferencia</strong> (deducir lo implícito). No se memoriza palabra por palabra.</p>
+        <p><em>Recomendación:</em> primera lectura rápida + segunda detenida.</p>
+      </div>
+      <div class="tile">
+        <span class="tag">Fase 3</span>
+        <h4>Poslectura</h4>
+        <p>Después de leer. Verificas comprensión, resuelves vocabulario, elaboras resúmenes y emites un juicio crítico. Trabajas los niveles <strong>literal</strong>, <strong>inferencial</strong> y <strong>crítico</strong>.</p>
+      </div>
+    </div>
+
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=fases+de+la+lectura+isabel+sole','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=fases+de+la+lectura+isabel+sole" target="_blank" rel="noopener" onclick="event.stopPropagation()">Fases de la lectura: antes, durante y después (Isabel Solé)</a>
+        <small>Estrategias de comprensión lectora paso a paso.</small>
+      </div>
+    </div>
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=estrategias+durante+la+lectura+muestreo+prediccion+inferencia','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=estrategias+durante+la+lectura+muestreo+prediccion+inferencia" target="_blank" rel="noopener" onclick="event.stopPropagation()">Estrategias durante la lectura: muestreo, predicción e inferencia</a>
+        <small>Videos animados con ejemplos prácticos.</small>
+      </div>
+    </div>
+
+    <div class="qa">
+      <h4>Preguntas de repaso</h4>
+      <details>
+        <summary>¿Cuál es la diferencia principal entre prelectura y poslectura?<span class="chev">+</span></summary>
+        <div class="resp">La <em>prelectura</em> ocurre antes de leer y sirve para predecir y activar conocimientos previos. La <em>poslectura</em> ocurre después y sirve para verificar la comprensión, sintetizar y emitir un juicio crítico.</div>
+      </details>
+      <details>
+        <summary>Menciona dos estrategias que se usan durante la lectura.<span class="chev">+</span></summary>
+        <div class="resp"><em>Muestreo:</em> seleccionar la información relevante e ignorar lo accesorio. <em>Inferencia:</em> deducir información implícita a partir de las pistas del texto y tus conocimientos previos.</div>
+      </details>
+      <details>
+        <summary>¿Por qué la poslectura es útil para estudiar?<span class="chev">+</span></summary>
+        <div class="resp">Porque obliga a relacionar ideas, elaborar esquemas, comparar con otros textos y cuestionar lo leído. Sin ella, el estudio se reduce a memorización mecánica.</div>
+      </details>
+    </div>
+
+    <h3 id="estrategias">Estrategias de comprensión lectora</h3>
+    <div class="card">
+      <ul>
+        <li><strong>Uso del contexto</strong> para inferir el significado de palabras desconocidas.</li>
+        <li><strong>Identificación de referentes pronominales</strong> (“él”, “esto”, “aquello”).</li>
+        <li><strong>Extracción de la idea esencial de cada párrafo</strong> y relación entre párrafos.</li>
+        <li><strong>Elaboración de esquemas</strong> (mapas conceptuales, cuadros sinópticos).</li>
+        <li><strong>Formulación de preguntas propias</strong>: literales, inferenciales y críticas.</li>
+        <li><strong>Lectura en voz alta</strong> para detectar ritmo, pausas y dificultades.</li>
+      </ul>
+    </div>
+
+    <div class="nota">
+      <strong>Dato clave:</strong> La competencia lectora implica localizar información, integrarla, interpretarla y evaluarla críticamente. Las estrategias de nivel superior (inferencia y crítica) son las que más impacto tienen en el estudio académico.
+    </div>
+
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=estrategias+de+comprension+lectora+poslectura','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=estrategias+de+comprension+lectora+poslectura" target="_blank" rel="noopener" onclick="event.stopPropagation()">Estrategias de comprensión lectora: resúmenes y esquemas</a>
+        <small>Ideas para aplicar en la fase de poslectura.</small>
+      </div>
+    </div>
+
+    <div class="qa">
+      <h4>Preguntas de repaso</h4>
+      <details>
+        <summary>¿Por qué las preguntas inferenciales son más útiles que las literales?<span class="chev">+</span></summary>
+        <div class="resp">Porque exigen comprender y relacionar, no solo localizar información. Las literales se responden copiando; las inferenciales obligan a deducir.</div>
+      </details>
+      <details>
+        <summary>Formula una pregunta literal y una inferencial sobre un párrafo cualquiera.<span class="chev">+</span></summary>
+        <div class="resp"><em>Ejemplo sobre un texto de reciclaje:</em><br><strong>Literal:</strong> ¿Qué porcentaje de residuos se recicla según el texto?<br><strong>Inferencial:</strong> ¿Qué consecuencia se deduce si ese porcentaje no aumenta?</div>
+      </details>
+    </div>
+
+    <h3 id="tipos">Tipos de textos</h3>
+    <p>Reconocer el tipo de texto te permite saber qué esperar y cómo leerlo. No se lee igual un cuento que un informe técnico.</p>
+
+    <div class="grid g2">
+      <div class="tile"><span class="tag">Narrativo</span><h4>Texto narrativo</h4><p>Relata hechos en el tiempo y el espacio: personajes, acciones, conflicto. Predominan los verbos de acción.</p><p><em>Ejemplos:</em> cuento, novela, noticia, biografía, crónica.</p></div>
+      <div class="tile"><span class="tag">Descriptivo</span><h4>Texto descriptivo</h4><p>Caracteriza personas, objetos, lugares o procesos. Predominan sustantivos y adjetivos.</p><p><em>Ejemplos:</em> guía turística, artículo enciclopédico, descripción técnica.</p></div>
+      <div class="tile"><span class="tag">Expositivo</span><h4>Texto expositivo</h4><p>Explica o informa de manera objetiva. No defiende una opinión personal.</p><p><em>Ejemplos:</em> artículo de divulgación, informe técnico, manual.</p></div>
+      <div class="tile"><span class="tag">Argumentativo</span><h4>Texto argumentativo</h4><p>Defiende una tesis con razones y evidencias para persuadir. Hay una postura explícita del autor.</p><p><em>Ejemplos:</em> ensayo, columna de opinión, texto publicitario.</p></div>
+      <div class="tile"><span class="tag">Instructivo</span><h4>Texto instructivo</h4><p>Da órdenes, procedimientos o recomendaciones. Predominan verbos en imperativo o infinitivo.</p><p><em>Ejemplos:</em> receta, manual de uso, reglamento.</p></div>
+      <div class="tile"><span class="tag">Digital</span><h4>Texto digital</h4><p>Combina escritura con hipervínculos, imágenes y multimedios. Exige lectura no lineal y evaluación de la fuente.</p><p><em>Ejemplos:</em> página web, blog, hilo de redes sociales.</p></div>
+    </div>
+
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=tipos+de+textos+narrativo+descriptivo+expositivo+argumentativo','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=tipos+de+textos+narrativo+descriptivo+expositivo+argumentativo" target="_blank" rel="noopener" onclick="event.stopPropagation()">Tipos de textos explicados con ejemplos</a>
+        <small>Busca “Tipos de textos PSU Lenguaje Capítulo 8”.</small>
+      </div>
+    </div>
+
+    <div class="qa">
+      <h4>Preguntas de repaso</h4>
+      <details>
+        <summary>¿Qué tipo de texto usarías para convencer a alguien de reciclar? ¿Y para explicarle cómo?<span class="chev">+</span></summary>
+        <div class="resp"><em>Para convencer:</em> argumentativo (ensayo, columna de opinión). <em>Para explicar cómo:</em> instructivo (manual, infografía paso a paso).</div>
+      </details>
+      <details>
+        <summary>¿Cuál es la diferencia lingüística principal entre narrativo y descriptivo?<span class="chev">+</span></summary>
+        <div class="resp">El narrativo se organiza en el tiempo y usa verbos de acción; el descriptivo se organiza en el espacio y usa sustantivos y adjetivos para caracterizar.</div>
+      </details>
+      <details>
+        <summary>Un informe de laboratorio, ¿es expositivo o argumentativo?<span class="chev">+</span></summary>
+        <div class="resp">Es expositivo: presenta datos y resultados de forma objetiva. Solo sería argumentativo si incluyera una discusión que defienda una interpretación con evidencias.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ==================== 2.2 ESCRITURA ==================== -->
+  <section id="escritura">
+    <div class="sec-head">
+      <div class="num">2.2</div>
+      <h2>Escritura</h2>
+    </div>
+
+    <h3 id="estructura">Estructura del texto</h3>
+    <p>Todo texto académico bien organizado responde a un esquema tripartito. Aunque los detalles varían según el género, la base es común.</p>
+
+    <div class="grid g3">
+      <div class="tile"><span class="tag verde">1</span><h4>Introducción</h4><p>Presenta y contextualiza el tema. Capta el interés y anuncia el propósito. En un ensayo puede iniciar con una pregunta o una afirmación provocadora. <strong>No</strong> desarrolla argumentos todavía.</p></div>
+      <div class="tile"><span class="tag verde">2</span><h4>Desarrollo</h4><p>Parte más extensa. Expone las ideas principales, <strong>una por párrafo</strong>, con ideas secundarias que las sustentan. Debe haber progresión lógica y uso de conectores.</p></div>
+      <div class="tile"><span class="tag verde">3</span><h4>Conclusión</h4><p>Retoma las ideas principales y ofrece un cierre. <strong>No</strong> repite la introducción. Puede sintetizar hallazgos, señalar implicaciones o dejar una reflexión final.</p></div>
+    </div>
+
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=estructura+de+un+texto+introduccion+desarrollo+conclusion','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=estructura+de+un+texto+introduccion+desarrollo+conclusion" target="_blank" rel="noopener" onclick="event.stopPropagation()">Estructura del texto: introducción, desarrollo y conclusión</a>
+        <small>Videos cortos de Educatina y UnProfesor.</small>
+      </div>
+    </div>
+
+    <div class="qa">
+      <h4>Pregunta de repaso</h4>
+      <details>
+        <summary>¿Qué debe contener la introducción de un texto académico?<span class="chev">+</span></summary>
+        <div class="resp">El tema contextualizado, el propósito del texto y, en un ensayo, la <em>tesis</em> que se defenderá. No debe adelantar todos los argumentos.</div>
+      </details>
+    </div>
+
+    <h3 id="cualidades">Cualidades de la redacción</h3>
+    <div class="grid g3">
+      <div class="tile"><span class="tag">Claridad</span><h4>Claridad</h4><p>Las ideas se comprenden sin ambigüedad. Se logra con oraciones ordenadas, referentes explícitos y evitando la anfibología.</p></div>
+      <div class="tile"><span class="tag">Concisión</span><h4>Concisión</h4><p>Usar solo las palabras necesarias. Eliminar rodeos y redundancias.</p><p><em>Exceso:</em> “En el caso de que llueva, tenemos la posibilidad de considerar la opción de suspender el evento.”<br><em>Conciso:</em> “Si llueve, podríamos suspender el evento.”</p></div>
+      <div class="tile"><span class="tag">Sencillez</span><h4>Sencillez</h4><p>Emplear palabras de uso común, sin caer en vulgaridad. Huir de lo enredado y artificioso. Un texto sencillo no es un texto pobre.</p></div>
+    </div>
+
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=cualidades+de+la+redaccion+claridad+concision+sencillez','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=cualidades+de+la+redaccion+claridad+concision+sencillez" target="_blank" rel="noopener" onclick="event.stopPropagation()">Cualidades de la redacción con ejemplos prácticos</a>
+        <small>Explicaciones de canales educativos.</small>
+      </div>
+    </div>
+
+    <div class="qa">
+      <h4>Preguntas de repaso</h4>
+      <details>
+        <summary>Reescribe aplicando la concisión: “En el caso de que llueva, tenemos la posibilidad de considerar la opción de suspender el evento.”<span class="chev">+</span></summary>
+        <div class="resp"><em>“Si llueve, podríamos suspender el evento.”</em></div>
+      </details>
+      <details>
+        <summary>¿Por qué la sencillez no es lo mismo que la pobreza léxica?<span class="chev">+</span></summary>
+        <div class="resp">Porque la sencillez busca la claridad con palabras precisas y de uso común, mientras que la pobreza léxica es repetir pocas palabras o usar términos imprecisos.</div>
+      </details>
+    </div>
+
+    <h3 id="puntuacion">Acentuación y signos de puntuación</h3>
+    <div class="card">
+      <h4>Reglas de acentuación</h4>
+      <ul>
+        <li><strong>Agudas:</strong> tilde si terminan en vocal, <em>-n</em> o <em>-s</em>. <em>Ej.:</em> café, camión, compás.</li>
+        <li><strong>Graves o llanas:</strong> tilde si terminan en consonante distinta de <em>-n</em> o <em>-s</em>. <em>Ej.:</em> árbol, lápiz, difícil.</li>
+        <li><strong>Esdrújulas:</strong> tilde <strong>siempre</strong>. <em>Ej.:</em> música, rápido, teléfono.</li>
+        <li><strong>Monosílabos:</strong> generalmente sin tilde, salvo <strong>tilde diacrítica</strong>: <em>él</em> (pronombre) vs. <em>el</em> (artículo).</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Signos de puntuación clave</h4>
+      <ul>
+        <li><strong>Coma (,):</strong> separa elementos de una lista, aísla vocativos y separa oraciones independientes.</li>
+        <li><strong>Punto y coma (;):</strong> separa oraciones de cierta extensión, especialmente antes de <em>pero, mas, aunque</em>.</li>
+        <li><strong>Dos puntos (:):</strong> anuncian una enumeración, una cita textual o una consecuencia.</li>
+        <li><strong>Puntos suspensivos (…):</strong> indican suspensión, duda o enumeración incompleta.</li>
+      </ul>
+    </div>
+
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=reglas+de+acentuacion+agudas+graves+esdrujulas+tilde+diacritica','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=reglas+de+acentuacion+agudas+graves+esdrujulas+tilde+diacritica" target="_blank" rel="noopener" onclick="event.stopPropagation()">Reglas de acentuación y tilde diacrítica</a>
+        <small>Videos animados con ejercicios resueltos.</small>
+      </div>
+    </div>
+
+    <div class="qa">
+      <h4>Preguntas de repaso</h4>
+      <details>
+        <summary>¿Por qué “él” lleva tilde y “el” (artículo) no?<span class="chev">+</span></summary>
+        <div class="resp">Porque <em>él</em> es un pronombre personal y <em>el</em> es un artículo. La tilde diacrítica distingue funciones gramaticales en palabras que se escriben igual.</div>
+      </details>
+      <details>
+        <summary>Corrige: “Compré pan leche y huevos pero olvidé el azúcar”.<span class="chev">+</span></summary>
+        <div class="resp"><em>“Compré pan, leche y huevos, pero olvidé el azúcar.”</em></div>
+      </details>
+      <details>
+        <summary>Escribe una oración con dos puntos que anuncie una enumeración.<span class="chev">+</span></summary>
+        <div class="resp"><em>“Necesito tres cosas para el examen: lápiz, borrador y calculadora.”</em></div>
+      </details>
+    </div>
+
+    <h3 id="vicios">Vicios gramaticales</h3>
+    <div class="tabla-wrap">
+      <table>
+        <thead><tr><th>Vicio</th><th>Qué es</th><th>Incorrecto</th><th>Correcto</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dequeísmo</strong></td><td>Usar “de que” cuando el verbo no lo exige.</td><td class="bad">Pienso de que es tarde.</td><td class="ok">Pienso que es tarde.</td></tr>
+          <tr><td><strong>Queísmo</strong></td><td>Omitir “de” cuando es necesario.</td><td class="bad">Me di cuenta que llegaste.</td><td class="ok">Me di cuenta de que llegaste.</td></tr>
+          <tr><td><strong>Anfibología</strong></td><td>Doble sentido.</td><td class="bad">Vi a Juan con prismáticos.</td><td class="ok">Vi a Juan, que llevaba prismáticos.</td></tr>
+          <tr><td><strong>Monotonía</strong></td><td>Repetir la misma palabra o estructura.</td><td class="bad">Hice la tarea, hice la comida, hice el informe.</td><td class="ok">Hice la tarea, preparé la comida, redacté el informe.</td></tr>
+          <tr><td><strong>Redundancia</strong></td><td>Decir lo mismo dos veces.</td><td class="bad">Subir arriba / salir afuera.</td><td class="ok">Subir / salir.</td></tr>
+          <tr><td><strong>Cacofonía</strong></td><td>Sonidos desagradables.</td><td class="bad">“Casualmente casual es…”</td><td class="ok">Reformular para evitar la repetición.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=vicios+gramaticales+dequeismo+queismo+anfibologia','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=vicios+gramaticales+dequeismo+queismo+anfibologia" target="_blank" rel="noopener" onclick="event.stopPropagation()">Vicios gramaticales con ejemplos y ejercicios</a>
+        <small>Educatina y UnProfesor.</small>
+      </div>
+    </div>
+
+    <div class="qa">
+      <h4>Preguntas de repaso</h4>
+      <details>
+        <summary>Identifica el vicio y corrige: “Pienso de que es tarde”.<span class="chev">+</span></summary>
+        <div class="resp"><em>Dequeísmo.</em> Correcto: “Pienso que es tarde.”</div>
+      </details>
+      <details>
+        <summary>Identifica el vicio y corrige: “Se subió arriba”.<span class="chev">+</span></summary>
+        <div class="resp"><em>Redundancia.</em> Correcto: “Subió.”</div>
+      </details>
+      <details>
+        <summary>¿Por qué la monotonía es problemática en un texto académico?<span class="chev">+</span></summary>
+        <div class="resp">Porque empobrece el texto, dificulta la precisión conceptual y aburre al lector. Se espera un vocabulario preciso y variado.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ==================== 2.3 ACADEMICA ==================== -->
+  <section id="academica">
+    <div class="sec-head">
+      <div class="num">2.3</div>
+      <h2>Comunicación escrita en entornos académicos</h2>
+    </div>
+
+    <h3 id="desc-narr">Descripción y narración</h3>
+    <div class="grid g2">
+      <div class="tile"><span class="tag">Narración</span><h4>Narrar</h4><p>Presenta hechos que ocurren en el tiempo. Requiere un narrador, personajes y una secuencia. En un informe de caso, la narración de los hechos es el punto de partida.</p></div>
+      <div class="tile"><span class="tag">Descripción</span><h4>Describir</h4><p>Detalla características, propiedades o estados. En el ámbito académico, la <strong>descripción técnica</strong> es esencial. Una buena descripción es completa, concisa y fiel.</p></div>
+    </div>
+
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=diferencia+entre+descripcion+y+narracion','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=diferencia+entre+descripcion+y+narracion" target="_blank" rel="noopener" onclick="event.stopPropagation()">Diferencia entre descripción y narración</a>
+        <small>Explicaciones con ejemplos de textos académicos y literarios.</small>
+      </div>
+    </div>
+
+    <div class="qa">
+      <h4>Pregunta de repaso</h4>
+      <details>
+        <summary>La descripción de un procedimiento experimental, ¿es narrativa o descriptiva?<span class="chev">+</span></summary>
+        <div class="resp">Es <em>descriptiva</em> (descripción técnica de un proceso): detalla pasos y características de forma objetiva. La narración aparecería si se contara lo que ocurrió durante el experimento.</div>
+      </details>
+    </div>
+
+    <h3 id="generos">Ensayo, discurso, informe y correo electrónico</h3>
+    <div class="grid g2">
+      <div class="tile"><span class="tag">Ensayo</span><h4>Ensayo</h4><p>Texto argumentativo donde el autor defiende una <strong>tesis</strong> con razones y evidencias. Introducción, desarrollo y conclusión. No es un resumen: es una toma de posición fundamentada.</p></div>
+      <div class="tile"><span class="tag">Discurso</span><h4>Discurso</h4><p>Texto oral planificado. Saludo inicial, introducción, argumentos o relato y cierre. El registro puede ser más emotivo que el ensayo, pero conserva estructura lógica.</p></div>
+      <div class="tile"><span class="tag">Informe</span><h4>Informe</h4><p>Texto <strong>expositivo</strong> que presenta datos con lenguaje objetivo y ordenado. Introducción, metodología, resultados y conclusiones. No defiende opinión personal.</p></div>
+      <div class="tile"><span class="tag">Correo</span><h4>Correo electrónico</h4><p>Comunicación académica breve. Debe tener <strong>Asunto</strong> claro, saludo respetuoso, cuerpo conciso, despedida y firma. Evita abreviaturas informales.</p></div>
+    </div>
+
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=como+elaborar+un+ensayo+introduccion+desarrollo+conclusion','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=como+elaborar+un+ensayo+introduccion+desarrollo+conclusion" target="_blank" rel="noopener" onclick="event.stopPropagation()">Cómo elaborar un ensayo (Nueva Escuela Mexicana)</a>
+        <small>Explicación animada de introducción, desarrollo y conclusión.</small>
+      </div>
+    </div>
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=diferencia+entre+ensayo+e+informe','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=diferencia+entre+ensayo+e+informe" target="_blank" rel="noopener" onclick="event.stopPropagation()">Diferencia entre ensayo e informe</a>
+        <small>Videos comparativos de canales educativos.</small>
+      </div>
+    </div>
+
+    <div class="qa">
+      <h4>Preguntas de repaso</h4>
+      <details>
+        <summary>¿Cuál es la diferencia principal entre un ensayo y un informe?<span class="chev">+</span></summary>
+        <div class="resp">El <em>ensayo</em> defiende una tesis con argumentos (argumentativo); el <em>informe</em> presenta datos de forma objetiva (expositivo).</div>
+      </details>
+      <details>
+        <summary>¿Qué debe incluir siempre el asunto de un correo académico?<span class="chev">+</span></summary>
+        <div class="resp">Un resumen claro y breve: materia, tema y propósito (ej.: <em>“Entrega del informe de laboratorio 3 – Biología”</em>).</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ==================== 2.4 PLAGIO ==================== -->
+  <section id="plagio">
+    <div class="sec-head">
+      <div class="num">2.4</div>
+      <h2>Plagio intelectual</h2>
+    </div>
+
+    <p>El plagio es usar ideas, palabras o estructuras de otro autor <strong>sin dar crédito</strong>. No es solo “copiar y pegar”: también es plagio parafrasear sin citar o reutilizar un trabajo propio anterior sin declararlo (autoplagio).</p>
+
+    <div class="grid g2">
+      <div class="tile"><span class="tag rojo">Directo</span><h4>Plagio directo</h4><p>Copiar textualmente sin comillas ni referencia.</p></div>
+      <div class="tile"><span class="tag rojo">Parafraseo</span><h4>Parafraseo inapropiado</h4><p>Cambiar algunas palabras pero mantener la estructura y las ideas originales sin citar la fuente.</p></div>
+      <div class="tile"><span class="tag rojo">Autoplagio</span><h4>Autoplagio</h4><p>Presentar un trabajo propio ya entregado en otra materia como si fuera nuevo.</p></div>
+      <div class="tile"><span class="tag rojo">Ideas</span><h4>Plagio de ideas</h4><p>Usar una idea original de otro autor sin citarlo, aunque esté redactada con tus palabras.</p></div>
+    </div>
+
+    <div class="alerta">
+      <strong>Consecuencias:</strong> Desde anular un trabajo o suspender una materia hasta daño reputacional profesional. En muchas instituciones, el plagio reiterado es una falta grave.
+    </div>
+
+    <div class="card">
+      <h4>Cómo evitarlo</h4>
+      <ul>
+        <li><strong>Cita siempre</strong> (Autor, año, página) cuando uses ideas o palabras ajenas.</li>
+        <li><strong>Parafrasea de verdad:</strong> cambia la estructura y el vocabulario, y aun así cita la fuente.</li>
+        <li><strong>Declara el uso de IA</strong> si la institución lo requiere.</li>
+        <li><strong>Lleva un registro</strong> de tus fuentes mientras investigas.</li>
+        <li><strong>Usa comillas</strong> para citas textuales y añade la referencia completa.</li>
+      </ul>
+    </div>
+
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=evita+el+plagio+en+tus+trabajos+universitat+de+valencia','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=evita+el+plagio+en+tus+trabajos+universitat+de+valencia" target="_blank" rel="noopener" onclick="event.stopPropagation()">Evita el plagio en tus trabajos (Universitat de València)</a>
+        <small>Video institucional corto sobre qué es el plagio y cómo evitarlo.</small>
+      </div>
+    </div>
+    <div class="video" onclick="window.open('https://www.youtube.com/results?search_query=que+es+el+plagio+tipos+como+evitarlo','_blank')">
+      <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div>
+        <a href="https://www.youtube.com/results?search_query=que+es+el+plagio+tipos+como+evitarlo" target="_blank" rel="noopener" onclick="event.stopPropagation()">¿Qué es el plagio y cuántos tipos existen?</a>
+        <small>Ejemplos de citas APA y paráfrasis correcta.</small>
+      </div>
+    </div>
+
+    <div class="qa">
+      <h4>Preguntas de repaso</h4>
+      <details>
+        <summary>¿Por qué el parafraseo sin cita también es plagio?<span class="chev">+</span></summary>
+        <div class="resp">Porque la <em>idea</em> sigue siendo del autor original. Aunque cambies las palabras, si no citas la fuente te apropias de una idea ajena.</div>
+      </details>
+      <details>
+        <summary>Si encuentras una idea excelente en un artículo, ¿qué debes hacer?<span class="chev">+</span></summary>
+        <div class="resp">Reformularla con tus palabras (paráfrasis real) <em>y citar la fuente</em> (Autor, año, página). Si la copias textualmente, entre comillas y con referencia.</div>
+      </details>
+      <details>
+        <summary>¿Qué es el autoplagio y por qué es una falta de integridad?<span class="chev">+</span></summary>
+        <div class="resp">Es reutilizar un trabajo propio ya evaluado como si fuera nuevo. Engaña sobre el esfuerzo realizado y no demuestra el aprendizaje esperado en la nueva materia.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ==================== EXAMEN ==================== -->
+  <section id="examen">
+    <div class="sec-head">
+      <div class="num">2.5</div>
+      <h2>Examen final de autoevaluación</h2>
+    </div>
+
+    <div class="examen">
+      <details>
+        <summary>1. ¿Cuáles son las tres fases del proceso lector y qué haces en cada una?<span class="chev">+</span></summary>
+        <div class="resp"><em>Prelectura:</em> predecir y activar conocimientos previos. <em>Lectura:</em> construir el sentido global con muestreo, predicción e inferencia. <em>Poslectura:</em> verificar comprensión, sintetizar y emitir juicio crítico.</div>
+      </details>
+      <details>
+        <summary>2. Nombra las tres cualidades de la redacción y da un ejemplo de falta de concisión.<span class="chev">+</span></summary>
+        <div class="resp"><em>Claridad, concisión y sencillez.</em> Ejemplo: “En el caso de que llueva, tenemos la posibilidad de considerar la opción de suspender el evento.” → “Si llueve, podríamos suspender el evento.”</div>
+      </details>
+      <details>
+        <summary>3. ¿Diferencia entre texto expositivo y argumentativo? Da un ejemplo de cada uno.<span class="chev">+</span></summary>
+        <div class="resp">El <em>expositivo</em> informa objetivamente (ej.: artículo de divulgación, informe técnico). El <em>argumentativo</em> defiende una tesis con razones (ej.: ensayo, columna de opinión).</div>
+      </details>
+      <details>
+        <summary>4. ¿Qué es el dequeísmo? Escribe un ejemplo incorrecto y su corrección.<span class="chev">+</span></summary>
+        <div class="resp">Usar “de que” cuando el verbo no lo exige. <em>Incorrecto:</em> “Pienso de que es tarde.” <em>Correcto:</em> “Pienso que es tarde.”</div>
+      </details>
+      <details>
+        <summary>5. ¿Diferencia entre un ensayo y un informe?<span class="chev">+</span></summary>
+        <div class="resp">El <em>ensayo</em> es argumentativo: defiende una tesis. El <em>informe</em> es expositivo: presenta datos objetivos sin postura personal.</div>
+      </details>
+      <details>
+        <summary>6. ¿Por qué el autoplagio es una falta de integridad académica?<span class="chev">+</span></summary>
+        <div class="resp">Porque presenta un trabajo ya evaluado como nuevo, engañando sobre el esfuerzo y el aprendizaje realizados.</div>
+      </details>
+      <details>
+        <summary>7. Menciona tres estrategias de comprensión lectora que impliquen ir más allá del nivel literal.<span class="chev">+</span></summary>
+        <div class="resp">1) Formular preguntas inferenciales; 2) elaborar esquemas que relacionen ideas; 3) emitir un juicio crítico comparando con otras fuentes.</div>
+      </details>
+      <details>
+        <summary>8. ¿Qué signo de puntuación usarías para anunciar una enumeración? Da un ejemplo.<span class="chev">+</span></summary>
+        <div class="resp">Los <em>dos puntos (:)</em>. Ejemplo: “Necesito tres cosas: lápiz, borrador y calculadora.”</div>
+      </details>
+      <details>
+        <summary>9. Identifica el vicio gramatical: “Me di cuenta que llegaste tarde”.<span class="chev">+</span></summary>
+        <div class="resp"><em>Queísmo.</em> Correcto: “Me di cuenta de que llegaste tarde.”</div>
+      </details>
+      <details>
+        <summary>10. ¿Qué debe incluir el asunto de un correo electrónico académico?<span class="chev">+</span></summary>
+        <div class="resp">Un resumen claro y breve: materia, tema y propósito (ej.: “Entrega del informe de laboratorio 3 – Biología”).</div>
+      </details>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="line"></div>
+  <p><strong>Guía de Estudio · Lectura, Escritura y Comunicación Académica</strong></p>
+  <p style="margin-top:.4rem;">Los enlaces abren búsquedas en YouTube con los términos de cada tema.</p>
+</footer>
+
+<button id="top" title="Volver arriba">↑</button>
+
+<script>
+  /* Botón volver arriba */
+  const btnTop = document.getElementById('top');
+  window.addEventListener('scroll', () => {
+    btnTop.classList.toggle('show', window.scrollY > 400);
+  });
+  btnTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  /* Solo una respuesta abierta por bloque */
+  document.querySelectorAll('.qa, .examen').forEach(grupo => {
+    grupo.querySelectorAll('details').forEach(d => {
+      d.addEventListener('toggle', () => {
+        if(d.open){
+          grupo.querySelectorAll('details').forEach(otro => {
+            if(otro !== d) otro.open = false;
+          });
+        }
+      });
+    });
+  });
+
+  /* Resaltar nav activo al hacer scroll */
+  const secciones = document.querySelectorAll('section');
+  const enlacesNav = document.querySelectorAll('header nav a');
+  window.addEventListener('scroll', () => {
+    let actual = '';
+    secciones.forEach(s => {
+      if(window.scrollY >= s.offsetTop - 120) actual = s.id;
+    });
+    enlacesNav.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + actual);
+    });
+  });
+</script>
+</body>
+</html>
